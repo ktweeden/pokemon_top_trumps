@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   player1Select.addEventListener('change', (event) => {
     const url = event.target.value;
-    const parentContainer = document.querySelector('#player1');
+    const parentContainer = document.querySelector('#player1-pokemon');
     pokeData.getIndividualPokemonData(url, (data) => {
       parentContainer.innerHTML = '';
       pokeView.renderIndividualPokemon(data, parentContainer);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   player2Select.addEventListener('change', (event) => {
     const url = event.target.value;
-    const parentContainer = document.querySelector('#player2');
+    const parentContainer = document.querySelector('#player2-pokemon');
     pokeData.getIndividualPokemonData(url, (data) => {
       parentContainer.innerHTML = '';
       pokeView.renderIndividualPokemon(data, parentContainer);

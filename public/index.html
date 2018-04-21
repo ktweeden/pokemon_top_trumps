@@ -3,21 +3,28 @@
   <head>
     <meta charset="utf-8">
     <script src="js/bundle.js"></script>
+    <link rel="stylesheet" href="css/main.css">
     <title>PokeTrumps</title>
   </head>
   <body>
     <h1>Pokemon Top Trumps</h1>
-    <select id="player-1-select"></select>
-    <select id="player-2-select"></select>
-    <button type="button" id="base-experience">Base experience</button>
-    <button type="button" id="height">Height</button>
-    <button type="button" id="weight">Weight</button>
+    <div class="buttons">
+      <select id="player-1-select"></select>
+      <select id="player-2-select"></select>
+      <button type="button" id="base-experience">Base experience</button>
+      <button type="button" id="height">Height</button>
+      <button type="button" id="weight">Weight</button>
+    </div>
     <p id="winner"></p>
     <div id="choices">
-      <h2>Player 1</h2>
-      <div id="player1"></div>
-      <h2>Player 2</h2>
-      <div id="player2"></div>
+      <div id="player1" class="player">
+        <h2>Player 1</h2>
+        <div id="player1-pokemon"></div>
+      </div>
+      <div id="player2" class="player">
+        <h2>Player 2</h2>
+        <div id="player2-pokemon"></div>
+      </div>
     </div>
   </body>
 </html>
