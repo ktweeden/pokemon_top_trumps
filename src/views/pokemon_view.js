@@ -19,7 +19,7 @@ PokeView.prototype.renderSelects = function (pokeData) {
   });
 };
 
-PokeView.prototype.renderIndividualPokemon = function (pokemonData) {
+PokeView.prototype.renderIndividualPokemon = function (pokemonData, parentContainer) {
   console.dir(pokemonData);
   const pokemon = document.createElement('div');
 
@@ -39,7 +39,7 @@ PokeView.prototype.renderIndividualPokemon = function (pokemonData) {
   weight.textContent = `Weight: ${pokemonData.weight}`;
   pokemon.appendChild(weight);
 
-  this.pokemonContainer.appendChild(pokemon);
+  parentContainer.appendChild(pokemon);
 };
 
 PokeView.prototype.renderWinner = function (winnerString, pokemon) {

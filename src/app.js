@@ -19,16 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   player1Select.addEventListener('change', (event) => {
     const url = event.target.value;
+    const parentContainer = document.querySelector('#player1');
     pokeData.getIndividualPokemonData(url, (data) => {
-      pokeView.renderIndividualPokemon(data);
+      parentContainer.innerHTML = '';
+      pokeView.renderIndividualPokemon(data, parentContainer);
       player1.currentHand = data;
     });
   });
 
   player2Select.addEventListener('change', (event) => {
     const url = event.target.value;
+    const parentContainer = document.querySelector('#player2');
     pokeData.getIndividualPokemonData(url, (data) => {
-      pokeView.renderIndividualPokemon(data);
+      parentContainer.innerHTML = '';
+      pokeView.renderIndividualPokemon(data, parentContainer);
       player2.currentHand = data;
     });
   });
