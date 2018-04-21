@@ -16,6 +16,7 @@ PokeData.prototype.getData = function(onComplete) {
 PokeData.prototype.getIndividualPokemonData = function(pokemonUrl, onComplete) {
   const request = new Request(pokemonUrl);
   request.get(data => {
+    console.log(data);
     onComplete(data)
   });
 }

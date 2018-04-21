@@ -19,25 +19,49 @@ PokeView.prototype.renderSelects = function (pokeData) {
   });
 };
 
-PokeView.prototype.renderIndividualPokemon = function (pokemonData, parentContainer) {
-  console.dir(pokemonData);
+PokeView.prototype.renderIndividualPokemon = function (card, parentContainer) {
+  console.dir(card);
   const pokemon = document.createElement('div');
 
   const name = document.createElement('h3');
-  name.textContent = `Name: ${pokemonData.name}`;
+  name.textContent = `Name: ${card.name}`;
   pokemon.appendChild(name);
 
-  const exp = document.createElement('h3');
-  exp.textContent = `Base experience: ${pokemonData.base_experience}`;
-  pokemon.appendChild(exp);
+  const image = document.createElement('img');
+  image.src = card.image;
+  pokemon.appendChild(image);
 
   const height = document.createElement('h3');
-  height.textContent = `Height: ${pokemonData.height}`;
+  height.textContent = `Height: ${card.height}`;
   pokemon.appendChild(height);
 
   const weight = document.createElement('h3');
-  weight.textContent = `Weight: ${pokemonData.weight}`;
+  weight.textContent = `Weight: ${card.weight}`;
   pokemon.appendChild(weight);
+
+  const speed = document.createElement('h3');
+  speed.textContent = `Speed: ${card.speed}`;
+  pokemon.appendChild(speed);
+
+  const specialAttack = document.createElement('h3');
+  specialAttack.textContent = `Special Attack: ${card.specialAttack}`;
+  pokemon.appendChild(specialAttack);
+
+  const specialDefense = document.createElement('h3');
+  specialDefense.textContent = `Special Defense: ${card.specialDefense}`;
+  pokemon.appendChild(specialDefense);
+
+  const attack = document.createElement('h3');
+  attack.textContent = `Attack: ${card.attack}`;
+  pokemon.appendChild(attack);
+
+  const defense = document.createElement('h3');
+  defense.textContent = `Defense: ${card.defense}`;
+  pokemon.appendChild(defense);
+
+  const hp = document.createElement('h3');
+  hp.textContent = `Hp: ${card.hp}`;
+  pokemon.appendChild(hp);
 
   parentContainer.appendChild(pokemon);
 };

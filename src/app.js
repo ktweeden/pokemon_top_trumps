@@ -1,6 +1,7 @@
 const PokeData = require('./models/pokemon_data.js');
 const PokeView = require('./views/pokemon_view.js');
-const Player = require('./models/player.js')
+const Player = require('./models/player.js');
+const Card = require('./models/card.js');
 
 document.addEventListener('DOMContentLoaded', () => {
   const pokeData = new PokeData();
@@ -22,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const parentContainer = document.querySelector('#player1-pokemon');
     pokeData.getIndividualPokemonData(url, (data) => {
       parentContainer.innerHTML = '';
-      pokeView.renderIndividualPokemon(data, parentContainer);
-      player1.currentHand = data;
+      const pokemonCard = new Card(data);
+      pokeView.renderIndividualPokemon(pokemonCard, parentContainer);
+      player1.currentHand = pokemonCard;
     });
   });
 
@@ -32,14 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const parentContainer = document.querySelector('#player2-pokemon');
     pokeData.getIndividualPokemonData(url, (data) => {
       parentContainer.innerHTML = '';
-      pokeView.renderIndividualPokemon(data, parentContainer);
-      player2.currentHand = data;
+      const pokemonCard = new Card(data);
+      pokeView.renderIndividualPokemon(pokemonCard, parentContainer);
+      player2.currentHand = pokemonCard;
     });
   });
 
-  const baseExperienceButton = document.querySelector('#base-experience');
-  const weightExperienceButton = document.querySelector('#weight');
-  const heightExperienceButton = document.querySelector('#height');
+  const weightButton = document.querySelector('#weight');
+  const heightButton = document.querySelector('#height');
+  const speedButton = document.querySelector('#speed');
+  const specialAttackButton = document.querySelector('#special-attack');
+  const specialDefenseButton = document.querySelector('#special-defense');
+  const attackButton = document.querySelector('#attack');
+  const defenseButton = document.querySelector('#defense');
+  const hpButton = document.querySelector('#hp');
 
   const compare = function(attribute, onComplete) {
     if (player1.currentHand[attribute] > player2.currentHand[attribute]) {
@@ -50,15 +58,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  baseExperienceButton.addEventListener('click', () => {
-    compare('base_experience', pokeView.renderWinner);
-  });
-
-  weightExperienceButton.addEventListener('click', () => {
+  heightButton.addEventListener('click', () => {
     compare('height', pokeView.renderWinner);
   });
 
-  heightExperienceButton.addEventListener('click', () => {
+  weightButton.addEventListener('click', () => {
     compare('weight', pokeView.renderWinner);
+  });
+
+  speedButton.addEventListener('click', () => {
+    compare('speed', pokeView.renderWinner);
+  });
+
+  specialAttackButton.addEventListener('click', () => {
+    compare('specialAttack', pokeView.renderWinner);
+  });
+
+  specialDefenseButton.addEventListener('click', () => {
+    compare('specialDefense', pokeView.renderWinner);
+  });
+
+  attackButton.addEventListener('click', () => {
+    compare('attack', pokeView.renderWinner);
+  });
+
+  defenseButton.addEventListener('click', () => {
+    compare('defense', pokeView.renderWinner);
+  });
+
+  hpButton.addEventListener('click', () => {
+    compare('hp', pokeView.renderWinner);
   });
 });
