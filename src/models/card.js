@@ -1,5 +1,5 @@
 const Card = function(pokemonData) {
-  this.name = pokemonData.name;
+  this.name = pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1);
   this.height = pokemonData.height;
   this.weight = pokemonData.weight;
   this.speed = pokemonData.stats[0].base_stat;

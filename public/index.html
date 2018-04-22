@@ -4,33 +4,20 @@
     <meta charset="utf-8">
     <script src="js/bundle.js"></script>
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <title>PokeTrumps</title>
   </head>
   <body>
     <h1>Pokemon Top Trumps</h1>
-    <div class="scores">
-      <p id="player1-score">Player 1: 0</p>
-      <p id="player2-score">Player 2: 0</p>
-    </div>
     <p id="message"></p>
-    <div class="buttons">
-      <button type="button" id="height">Height</button>
-      <button type="button" id="weight">Weight</button>
-      <button type="button" id="speed">Speed</button>
-      <button type="button" id="special-attack">Special Attack</button>
-      <button type="button" id="special-defense">Special Defense</button>
-      <button type="button" id="attack">Attack</button>
-      <button type="button" id="defense">Defense</button>
-      <button type="button" id="hp">Hp</button>
-    </div>
-    <p id="winner"></p>
     <div id="choices">
       <div id="player1" class="player">
-        <h2>Player 1</h2>
+        <p class="scores" id="player1-score">Player 1: 0</p>
         <div id="player1-pokemon"></div>
       </div>
       <div id="player2" class="player">
-        <h2>Player 2</h2>
+        <p class="scores" id="player2-score">Player 2: 0</p>
         <div id="player2-pokemon"></div>
       </div>
     </div>

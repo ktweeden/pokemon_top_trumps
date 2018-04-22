@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const play = function() {
     populatePlayerHands(() => {
-      pokeView.renderIndividualPokemon(currentPlayer)
+      pokeView.renderIndividualPokemon(currentPlayer, addCompareButtons)
     });
     document.querySelector('#message').textContent = `${currentPlayer.name}'s turn. Chose an attribute to compare.`
   }
@@ -55,21 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearPlayArea = function() {
     document.querySelector('#player1-pokemon').innerHTML = '';
     document.querySelector('#player2-pokemon').innerHTML = '';
-    document.querySelector('#winner').innerHTML = '';
     document.querySelector('#message').innerHTML = '';
   }
 
-  const weightButton = document.querySelector('#weight');
-  const heightButton = document.querySelector('#height');
-  const speedButton = document.querySelector('#speed');
-  const specialAttackButton = document.querySelector('#special-attack');
-  const specialDefenseButton = document.querySelector('#special-defense');
-  const attackButton = document.querySelector('#attack');
-  const defenseButton = document.querySelector('#defense');
-  const hpButton = document.querySelector('#hp');
-
   const compare = function(attribute, onComplete) {
-    pokeView.renderIndividualPokemon(otherPlayer);
+    pokeView.renderIndividualPokemon(otherPlayer, () => {});
     if (player1.currentHand[attribute] > player2.currentHand[attribute]) {
       player1.score += 1;
       onComplete('Player 1', player1.currentHand);
@@ -105,35 +95,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  heightButton.addEventListener('click', () => {
-    compare('height', pokeView.renderWinner);
-  });
+  const addCompareButtons = function() {
+    const weightButton = document.querySelector('#weight');
+    const heightButton = document.querySelector('#height');
+    const speedButton = document.querySelector('#speed');
+    const specialAttackButton = document.querySelector('#special-attack');
+    const specialDefenseButton = document.querySelector('#special-defense');
+    const attackButton = document.querySelector('#attack');
+    const defenseButton = document.querySelector('#defense');
+    const hpButton = document.querySelector('#hp');
 
-  weightButton.addEventListener('click', () => {
-    compare('weight', pokeView.renderWinner);
-  });
+    heightButton.addEventListener('click', () => {
+      compare('height', pokeView.renderWinner);
+    });
 
-  speedButton.addEventListener('click', () => {
-    compare('speed', pokeView.renderWinner);
-  });
+    weightButton.addEventListener('click', () => {
+      compare('weight', pokeView.renderWinner);
+    });
 
-  specialAttackButton.addEventListener('click', () => {
-    compare('specialAttack', pokeView.renderWinner);
-  });
+    speedButton.addEventListener('click', () => {
+      compare('speed', pokeView.renderWinner);
+    });
 
-  specialDefenseButton.addEventListener('click', () => {
-    compare('specialDefense', pokeView.renderWinner);
-  });
+    specialAttackButton.addEventListener('click', () => {
+      compare('specialAttack', pokeView.renderWinner);
+    });
 
-  attackButton.addEventListener('click', () => {
-    compare('attack', pokeView.renderWinner);
-  });
+    specialDefenseButton.addEventListener('click', () => {
+      compare('specialDefense', pokeView.renderWinner);
+    });
 
-  defenseButton.addEventListener('click', () => {
-    compare('defense', pokeView.renderWinner);
-  });
+    attackButton.addEventListener('click', () => {
+      compare('attack', pokeView.renderWinner);
+    });
 
-  hpButton.addEventListener('click', () => {
-    compare('hp', pokeView.renderWinner);
-  });
+    defenseButton.addEventListener('click', () => {
+      compare('defense', pokeView.renderWinner);
+    });
+
+    hpButton.addEventListener('click', () => {
+      compare('hp', pokeView.renderWinner);
+    });
+  }
 });
