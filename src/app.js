@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const pokemonChoiceContainer = document.querySelector("#choices");
-  const player1 = new Player(document.querySelector('#player1-pokemon'));
-  const player2 = new Player(document.querySelector('#player2-pokemon'));
+  const player1 = new Player('Player 1', document.querySelector('#player1-pokemon'));
+  const player2 = new Player('Player 2', document.querySelector('#player2-pokemon'));
   let currentPlayer = player1;
   let otherPlayer = player2;
 
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populatePlayerHands(() => {
       pokeView.renderIndividualPokemon(currentPlayer)
     });
+    document.querySelector('#message').textContent = `${currentPlayer.name}'s turn. Chose an attribute to compare.`
   }
 
   const dealCards = function(data) {
@@ -52,7 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const clearPlayArea = function() {
-
+    document.querySelector('#player1-pokemon').innerHTML = '';
+    document.querySelector('#player2-pokemon').innerHTML = '';
+    document.querySelector('#winner').innerHTML = '';
+    document.querySelector('#message').innerHTML = '';
   }
 
   const weightButton = document.querySelector('#weight');
@@ -67,17 +71,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const compare = function(attribute, onComplete) {
     pokeView.renderIndividualPokemon(otherPlayer);
     if (player1.currentHand[attribute] > player2.currentHand[attribute]) {
+      player1.score += 1;
       onComplete('Player 1', player1.currentHand);
+      document.querySelector('#player1-score').textContent = `Player 1: ${player1.score}`;
     }
     else {
+      player2.score += 1;
       onComplete('Player 2', player2.currentHand);
+      document.querySelector('#player2-score').textContent = `Player 2: ${player2.score}`;
     }
-    setTimeout(() => {
-      console.log('setting timeout');
-      switchPlayerRoles();
-      play();
-    }, 3000);
+    const winner = isWon();
+    if(isWon() != null) {
+      document.querySelector('#message').textContent = `${winner.name} has won!`
+    }
+    else {
+      setTimeout(() => {
+        clearPlayArea();
+        switchPlayerRoles();
+        play();
+      }, 5000);
+    }
   };
+
+  const isWon = function() {
+    if (player1.score === 10){
+      return player1;
+    }
+    else if(player2.score === 10) {
+      return player2;
+    }
+    else {
+      return null;
+    }
+  }
 
   heightButton.addEventListener('click', () => {
     compare('height', pokeView.renderWinner);
