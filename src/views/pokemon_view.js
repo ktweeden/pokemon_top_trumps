@@ -1,26 +1,11 @@
-const PokeView = function(pokemonContainer, select1, select2) {
-  this.select1 = select1;
-  this.select2 = select2;
+const PokeView = function(pokemonContainer) {
   this.pokemonContainer = pokemonContainer;
 
 }
 
-
-PokeView.prototype.renderSelects = function (pokeData) {
-  pokeData.forEach(pokemon => {
-    const pokeOption1 = document.createElement('option');
-    const pokeOption2 = document.createElement('option');
-    pokeOption1.textContent = pokemon.name;
-    pokeOption1.value = pokemon.url;
-    pokeOption2.textContent = pokemon.name;
-    pokeOption2.value = pokemon.url;
-    this.select1.appendChild(pokeOption1);
-    this.select2.appendChild(pokeOption2);
-  });
-};
-
-PokeView.prototype.renderIndividualPokemon = function (card, parentContainer) {
-  console.dir(card);
+PokeView.prototype.renderIndividualPokemon = function (player) {
+  const card = player.currentHand;
+  console.dir(player.currentHand);
   const pokemon = document.createElement('div');
 
   const name = document.createElement('h3');
@@ -63,7 +48,7 @@ PokeView.prototype.renderIndividualPokemon = function (card, parentContainer) {
   hp.textContent = `Hp: ${card.hp}`;
   pokemon.appendChild(hp);
 
-  parentContainer.appendChild(pokemon);
+  player.playArea.appendChild(pokemon);
 };
 
 PokeView.prototype.renderWinner = function (winnerString, pokemon) {
