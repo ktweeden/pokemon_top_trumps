@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populatePlayerHands(() => {
       pokeView.renderIndividualPokemon(currentPlayer, addCompareButtons)
     });
-    document.querySelector('#message').textContent = `${currentPlayer.name}'s turn. Chose an attribute to compare.`
+    document.querySelector('#message').textContent = `${currentPlayer.name}'s turn. Choose an attribute to compare.`
   }
 
   const dealCards = function(data) {
@@ -62,12 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
     pokeView.renderIndividualPokemon(otherPlayer, () => {});
     if (player1.currentHand[attribute] > player2.currentHand[attribute]) {
       player1.score += 1;
-      onComplete('Player 1', player1.currentHand);
+      onComplete('Player 1', player1.currentHand, player2.currentHand);
       document.querySelector('#player1-score').textContent = `Player 1: ${player1.score}`;
+    }
+    else if(player1.currentHand[attribute] === player2.currentHand[attribute]) {
+      onComplete(null, null, null);
     }
     else {
       player2.score += 1;
-      onComplete('Player 2', player2.currentHand);
+      onComplete('Player 2', player2.currentHand, player1.currentHand);
       document.querySelector('#player2-score').textContent = `Player 2: ${player2.score}`;
     }
     const winner = isWon();

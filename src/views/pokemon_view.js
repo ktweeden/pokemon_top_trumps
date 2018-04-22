@@ -9,7 +9,7 @@ PokeView.prototype.renderIndividualPokemon = function (player, onComplete) {
   const pokemon = document.createElement('div');
   pokemon.classList.add('pokemon-card');
 
-  const name = document.createElement('h3');
+  const name = document.createElement('h2');
   name.textContent = `${card.name}`;
   pokemon.appendChild(name);
   name.classList.add('pokemon-name');
@@ -63,9 +63,14 @@ PokeView.prototype.renderIndividualPokemon = function (player, onComplete) {
   onComplete();
 };
 
-PokeView.prototype.renderWinner = function (winnerString, pokemon) {
+PokeView.prototype.renderWinner = function (winnerString, pokemon, loser) {
   const winnerContainer = document.querySelector('#message');
-  winnerContainer.textContent = `${winnerString} wins with ${pokemon.name}`;
+  if (!winnerString) {
+    winnerContainer.textContent = "It's a draw!";
+  }
+  else {
+    winnerContainer.textContent = `${winnerString} wins with ${pokemon.name}. ${loser.name} fainted!`;
+  }
 };
 
 module.exports = PokeView;

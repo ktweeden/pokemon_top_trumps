@@ -27,7 +27,7 @@ html {
 .player {
   margin: 1rem;
   height: 100%;
-  min-width: 250px;
+  min-width: 270px;
 }
 .buttons {
   display: flex;
@@ -45,16 +45,23 @@ html {
 }
 
 .pokemon-card {
-  background: linear-gradient(45deg, #f6e6b4 0%,#ed9017 100%);
   border: 10px solid #F9E733;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  min-width: 250px;
+  min-width: 270px;
+}
+
+#player1-pokemon .pokemon-card {
+  background: linear-gradient(195deg, #f9e733, #ed1717b5);
+}
+
+#player2-pokemon .pokemon-card {
+  background: linear-gradient(195deg, #0c7fd6, #ffeb00d9);
 }
 
 .pokemon-card img {
-  background: linear-gradient(70deg, #3A4AD1, #EBEBEC);
+  background: linear-gradient(150deg, #7d81a0, #EBEBEC);
   border: 2px solid #061592;
   margin: 1rem;
   align-self: center;
@@ -62,16 +69,22 @@ html {
 }
 
 .pokemon-card h3 {
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
   text-align: right;
   background-color: rgba(235, 235, 236, 0.3);
-  padding: 0 0.2rem;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
 }
 
-h3.pokemon-name {
+.pokemon-card h3:hover {
+  background-color: rgba(235, 235, 236, 0.6);
+}
+
+h2.pokemon-name {
   text-align: left;
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   margin: 0;
+  background-color: rgba(235, 235, 236, 0.3);
 }
 
 h1 {
