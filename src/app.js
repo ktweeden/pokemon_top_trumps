@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearPlayArea();
         switchPlayerRoles();
         play();
-      }, 5000);
+      }, 3000);
     }
   };
 
@@ -141,3 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+
+// firstArray = [1,2,2,4];
+// finalArray = [];
+//
+// let nameArray = firstArray.map(item => item.name);
+//
+// firstArray.forEach(item => {
+//   if(nameArray.includes(item.name) {
+//     finalArray.push(item);
+//     nameArray.splice(nameArray.indexof(item.name), 1);
+//   });
+// })
